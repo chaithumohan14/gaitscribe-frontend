@@ -1,0 +1,11 @@
+declare var process: {
+  env: {
+    NODE_ENV;
+    HASURA_GRAPHQL_ENGINE_HOSTNAME;
+    HASURA_CLOUD_HOSTNAME;
+    AUTH_CLIENT_ID;
+    AUTH_DOMAIN;
+    CALLBACK_PATH;
+    GRAPHQL_ENDPOINT;
+  };
+};

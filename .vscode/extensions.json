@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "styled-components.vscode-styled-components",
+    "dsznajder.es7-react-js-snippets",
+    "Tyriar.lorem-ipsum",
+    "oderwat.indent-rainbow",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "aaron-bond.better-comments",
+    "eamodio.gitlens",
+    "xabikos.JavaScriptSnippets"
+  ]
+}
