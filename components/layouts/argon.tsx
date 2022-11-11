@@ -6,4 +6,15 @@ export const Argon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Roboto';
 `;
+
+export const LeftAlignedDiv = styled.div`
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: calc(100% - 24%);
+  margin: 0 12%;
+`
