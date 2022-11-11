@@ -11,7 +11,7 @@ const Login = () => {
             <img src="login-bg-01.jpg" alt="" className="bg" />
             <LoginHeader>GAITSCRIBE</LoginHeader>
             <LoginSubtext>An Ortho Assits</LoginSubtext>
-            <LoginCard elevation={2}>
+            <LoginCard elevation={3}>
                 <LoginForm/>
             </LoginCard>
         </LeftAlignedDiv>

@@ -1,49 +1,51 @@
-import { TextField, FormControlLabel, Checkbox, Button } from '@mui/material'
+import { FormControlLabel, Button } from '@mui/material'
 import styled from "@emotion/styled"
-import Link from 'next/link'
+import PasswordField from '@components/atoms/password'
+import { FormHeader, StyledCheckbox, StyledLink, StyledPrompt, StyledTextField } from '@components/atoms/login'
+import Router from 'next/router'
 
-const VerticalAlign = styled.div`
+
+const LoginInputsSection = styled.form`
     display: flex;
     flex-direction: column;
     width: 400px;
     justify-content: space-between;
 `
+async function postToLogin(event: React.SyntheticEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const form = event.currentTarget
+    const payload = {
+        email: form.emailInput.value,
+        password: form.passwordInput.value,
+        rememberMe: form.rememberMe.checked
+    }
+    const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
 
-const FormHeader = styled.div`
-    margin: 0;
-    margin-bottom: .5rem;
-    font-weight: 300;
-    font-size: 2.5em;
-`
+    if (response.status == 200 || true) { // || true for demonstration purposes
+        Router.push('/dashboard')
+    } 
 
-const StyledCheckbox = styled(Checkbox)`
-    margin: 1em 0;
-`
-
-const StyledPrompt = styled.div`
-    text-align: center;
-    margin-top: 2rem;
-    font-size: .9rem;
-`
-
-const StyledTextField = styled(TextField)`
-    margin-top: .6rem;
-`
-
-const StyledLink = styled(Link)`
-    color: #1976D2;
-`
+    const errorMessage = (await response.json()).message
+    
+    console.log(payload, errorMessage);
+}
 
 const LoginForm = () => {
     return (<>
         <FormHeader>Login</FormHeader>
-        <VerticalAlign>
-            <StyledTextField variant='outlined' label="Email address" size='small' required/>
-            <StyledTextField variant='outlined' label="Password" size='small' required/>
-            <FormControlLabel control={<StyledCheckbox size='small'/>} label='Remember me'></FormControlLabel>
-            <Button variant="contained" size='small'>Login</Button>
+        <LoginInputsSection onSubmit={postToLogin}>
+            <StyledTextField type={'email'} id='emailInput' variant='outlined' label="Email address" size='small' required/>
+            <PasswordField />
+            <FormControlLabel control={<StyledCheckbox size='small'  id='rememberMe'/>} label='Remember me'></FormControlLabel>
+            <Button type='submit' variant="contained" size='small'>Login</Button>
             <StyledPrompt>Don't have an account ? <StyledLink href="/signup">Signup</StyledLink></StyledPrompt>
-        </VerticalAlign>
+        </LoginInputsSection>
     </>)
 }
 
