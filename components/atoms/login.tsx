@@ -18,6 +18,6 @@ export const LoginSubtext = styled.p`
 
 export const LoginCard = styled(Paper)`
   width: fit-content;
-  margin-top: 4em;
+  margin-top: 2.5rem;
   padding: 3.5rem 4.5rem;
 `;
