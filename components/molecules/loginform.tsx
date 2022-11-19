@@ -36,6 +36,8 @@ async function postToLogin(event: React.SyntheticEvent<HTMLFormElement>) {
     console.log(payload, errorMessage);
 }
 
+// min length 8
+
 const LoginForm = () => {
     return (<>
         <FormHeader>Login</FormHeader>
